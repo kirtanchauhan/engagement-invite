@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kirtan &amp; Shraddha — An Engagement Celebration</title>
+
+<!--
+==================================================================
+  HOW TO EDIT  (search for the word  EDIT  to jump between spots)
+==================================================================
+  This page is in 3 languages: English, Hindi, Gujarati.
+  ALL text lives in the I18N object in the <script> at the bottom —
+  edit names, dates, venue, copy there for every language at once.
+  NOTE: the I18N text OVERRIDES the HTML defaults on load, so keep
+  the I18N values correct (that's what visitors actually see).
+
+  1. TEXT/NAMES/DATE -> I18N object (3 language blocks: en, hi, gu).
+  2. COUNTDOWN DATE  -> EVENT.date  (drives the countdown + calendar).
+  3. VENUE / MAP     -> EVENT.location, and the <iframe> q= value.
+  4. RSVP            -> GFORM.action + GFORM.entries (Google Form endpoint + field ids).
+==================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital@0;1&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Tiro+Devanagari+Hindi:ital@0;1&family=Tiro+Gujarati:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --base:#FAF5F2;
+    --base-2:#F2E7E2;
+    --ink:#3B2A33;
+    --mulberry:#6E3850;
+    --rose:#B5707C;
+    --gold:#BD9B53;
+    --line:#E2D2CB;
+    --font-display:"Cormorant Garamond",serif;
+    --font-body:"EB Garamond",Georgia,serif;
+    --font-util:"Jost",sans-serif;
+  }
+
+  /* ---- language-specific fonts ---- */
+  body.lang-hi{
+    --font-display:"Tiro Devanagari Hindi",serif;
+    --font-body:"Tiro Devanagari Hindi",serif;
+    --font-util:"Tiro Devanagari Hindi",serif;
+  }
+  body.lang-gu{
+    --font-display:"Tiro Gujarati",serif;
+    --font-body:"Tiro Gujarati",serif;
+    --font-util:"Tiro Gujarati",serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;color:var(--ink);
+    background-color:var(--base);
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22170%22%20height%3D%22170%22%20viewBox%3D%220%200%20170%20170%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23BD9B53%22%20stroke-opacity%3D%220.16%22%20stroke-width%3D%221.1%22%20stroke-linecap%3D%22round%22%3E%3Cg%20transform%3D%22translate%2836%2C28%29%20rotate%28-12%29%22%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%2234%22%2F%3E%3Cpath%20d%3D%22M0%206%20C%20-10%202%20-16%206%20-20%2013%22%2F%3E%3Cpath%20d%3D%22M0%206%20C%2010%202%2016%206%2020%2013%22%2F%3E%3Cpath%20d%3D%22M0%2016%20C%20-8%2013%20-13%2016%20-17%2022%22%2F%3E%3Cpath%20d%3D%22M0%2016%20C%208%2013%2013%2016%2017%2022%22%2F%3E%3Cpath%20d%3D%22M0%2026%20C%20-6%2024%20-10%2026%20-13%2030%22%2F%3E%3Cpath%20d%3D%22M0%2026%20C%206%2024%2010%2026%2013%2030%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%28128%2C116%29%20rotate%28168%29%22%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%2230%22%2F%3E%3Cpath%20d%3D%22M0%206%20C%20-9%202%20-14%206%20-18%2012%22%2F%3E%3Cpath%20d%3D%22M0%206%20C%209%202%2014%206%2018%2012%22%2F%3E%3Cpath%20d%3D%22M0%2015%20C%20-7%2012%20-11%2015%20-15%2020%22%2F%3E%3Cpath%20d%3D%22M0%2015%20C%207%2012%2011%2015%2015%2020%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Ccircle%20cx%3D%22134%22%20cy%3D%2236%22%20r%3D%221.5%22%20fill%3D%22%23B5707C%22%20fill-opacity%3D%220.16%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%22126%22%20r%3D%221.5%22%20fill%3D%22%23B5707C%22%20fill-opacity%3D%220.16%22%2F%3E%3C%2Fsvg%3E");
+    background-size:170px 170px;
+    font-family:var(--font-body);
+    font-size:19px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  body.lang-hi,body.lang-gu{line-height:1.85;}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-family:var(--font-util);font-weight:400;font-size:.72rem;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--rose);margin:0 0 22px;
+  }
+  h2.title{
+    font-family:var(--font-display);font-weight:500;
+    font-size:clamp(2.1rem,5vw,3.1rem);color:var(--mulberry);margin:0 0 8px;line-height:1.1;
+  }
+  .centered{text-align:center;}
+
+  .sprig{display:block;margin:26px auto;width:190px;height:auto;color:var(--gold);}
+  .sprig path,.sprig line{stroke:currentColor;fill:none;stroke-width:1.1;stroke-linecap:round;}
+
+  /* ---- language switcher ---- */
+  .lang-switch{
+    position:fixed;top:16px;right:18px;z-index:50;
+    display:flex;align-items:center;gap:2px;
+    background:rgba(250,245,242,.86);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:999px;padding:4px;
+  }
+  .lang-switch button{
+    border:none;background:transparent;cursor:pointer;
+    padding:6px 13px;border-radius:999px;color:var(--ink);
+    font-family:var(--font-util);font-size:.78rem;letter-spacing:.04em;
+    transition:background .2s,color .2s;line-height:1;
+  }
+  .lang-switch button[data-l="hi"]{font-family:"Tiro Devanagari Hindi",serif;}
+  .lang-switch button[data-l="gu"]{font-family:"Tiro Gujarati",serif;}
+  .lang-switch button[data-l="en"]{font-family:"Jost",sans-serif;letter-spacing:.14em;}
+  .lang-switch button:hover{color:var(--mulberry);}
+  .lang-switch button.active{background:var(--mulberry);color:#FBF3EF;}
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;overflow:hidden;
+    min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:80px 28px;
+    background:
+      radial-gradient(42% 32% at 18% 14%, rgba(181,112,124,.12), transparent 70%),
+      radial-gradient(42% 32% at 82% 18%, rgba(189,155,83,.13), transparent 70%),
+      radial-gradient(120% 90% at 50% 0%, rgba(255,253,251,.90) 0%, rgba(250,245,242,.52) 55%, rgba(242,231,226,.46) 130%);
+  }
+  .hero .eyebrow{margin-bottom:30px;}
+  .names{
+    font-family:var(--font-display);font-weight:500;color:var(--mulberry);
+    font-size:clamp(3.2rem,12vw,7rem);line-height:.98;margin:0;
+    display:flex;flex-direction:column;align-items:center;gap:.04em;
+  }
+  .amp{font-family:"Pinyon Script",cursive;color:var(--rose);font-size:.62em;font-weight:400;line-height:1;margin:.04em 0;}
+  .hero-sub{
+    font-family:var(--font-util);font-weight:300;letter-spacing:.22em;text-transform:uppercase;
+    font-size:.82rem;color:var(--ink);margin:34px 0 0;
+  }
+  .hero-date{font-family:var(--font-display);font-style:italic;font-size:1.5rem;color:var(--mulberry);margin:10px 0 0;}
+  .scroll-hint{margin-top:54px;font-family:var(--font-util);font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--rose);}
+  .scroll-hint span{display:block;width:1px;height:40px;margin:14px auto 0;background:var(--gold);opacity:.6;}
+
+  /* ---- countdown ---- */
+  .countdown{background:rgba(242,231,226,.62);}
+  .clock{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px;}
+  .unit{background:var(--base);border:1px solid var(--line);border-radius:2px;min-width:118px;padding:26px 16px;}
+  .unit .n{font-family:"Jost",sans-serif;font-weight:300;font-size:2.9rem;color:var(--mulberry);line-height:1;font-variant-numeric:tabular-nums;}
+  .unit .l{font-family:var(--font-util);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-top:12px;}
+
+  /* ---- details ---- */
+  .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:18px;}
+  .detail-block{margin-bottom:30px;}
+  .detail-block:last-child{margin-bottom:0;}
+  .detail-block .k{font-family:var(--font-util);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:6px;}
+  .detail-block .v{font-size:1.18rem;color:var(--ink);}
+  .detail-block .v em{font-style:italic;color:var(--mulberry);}
+  .map-frame{width:100%;height:340px;border:1px solid var(--line);border-radius:2px;filter:saturate(.85) contrast(.96);}
+
+  .cal-btn{
+    display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+    background:transparent;color:var(--mulberry);border:1px solid var(--gold);border-radius:2px;
+    padding:13px 30px;font-family:var(--font-util);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    transition:background .25s,color .25s,border-color .25s;
+  }
+  .cal-btn svg{stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;}
+  .cal-btn:hover{background:var(--mulberry);color:#FBF3EF;border-color:var(--mulberry);}
+  .cal-btn.done{border-color:var(--rose);color:var(--rose);background:transparent;}
+
+  /* ---- rsvp ---- */
+  .rsvp{background:rgba(242,231,226,.62);}
+  form{max-width:560px;margin:22px auto 0;text-align:left;}
+  .field{margin-bottom:22px;}
+  label{display:block;font-family:var(--font-util);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mulberry);margin-bottom:8px;}
+  .opt{text-transform:none;letter-spacing:0;color:var(--rose);}
+  input[type=text],input[type=email],input[type=number],textarea,select{
+    width:100%;background:var(--base);border:1px solid var(--line);border-radius:2px;
+    padding:13px 15px;font-family:var(--font-body);font-size:1.05rem;color:var(--ink);
+    transition:border-color .2s,box-shadow .2s;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(181,112,124,.16);}
+  textarea{min-height:104px;resize:vertical;}
+  .choice{display:flex;gap:26px;flex-wrap:wrap;}
+  .choice label{display:flex;align-items:center;gap:9px;text-transform:none;letter-spacing:.02em;font-family:var(--font-body);font-size:1.1rem;color:var(--ink);margin-bottom:0;cursor:pointer;}
+  .choice input{accent-color:var(--rose);width:18px;height:18px;}
+  button.submit{
+    width:100%;margin-top:6px;padding:15px;cursor:pointer;background:var(--mulberry);color:#FBF3EF;
+    border:none;border-radius:2px;font-family:var(--font-util);font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;
+    transition:background .25s,transform .1s;
+  }
+  button.submit:hover{background:var(--rose);}
+  button.submit:active{transform:translateY(1px);}
+  button.submit:disabled{opacity:.55;cursor:default;}
+  .form-msg{margin-top:18px;text-align:center;font-size:1.05rem;min-height:1.4em;color:var(--mulberry);}
+  .form-msg.error{color:#9c4444;}
+
+  footer{padding:70px 28px 56px;text-align:center;background:rgba(250,245,242,.5);}
+  footer .amp-foot{font-family:"Pinyon Script",cursive;color:var(--rose);font-size:2.4rem;line-height:1;}
+  footer p{font-family:var(--font-util);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.7;margin:14px 0 0;}
+
+  /* ---- Indic overrides ---- */
+  body.lang-hi .eyebrow,body.lang-gu .eyebrow,
+  body.lang-hi .hero-sub,body.lang-gu .hero-sub,
+  body.lang-hi .scroll-hint,body.lang-gu .scroll-hint,
+  body.lang-hi .unit .l,body.lang-gu .unit .l,
+  body.lang-hi .detail-block .k,body.lang-gu .detail-block .k,
+  body.lang-hi label,body.lang-gu label,
+  body.lang-hi .cal-btn,body.lang-gu .cal-btn,
+  body.lang-hi button.submit,body.lang-gu button.submit,
+  body.lang-hi footer p,body.lang-gu footer p{
+    letter-spacing:.02em;text-transform:none;
+  }
+  body.lang-hi .names,body.lang-gu .names{font-size:clamp(2.6rem,9vw,5rem);line-height:1.25;}
+  body.lang-hi .amp,body.lang-gu .amp{font-family:var(--font-display);font-size:.42em;}
+  body.lang-hi .hero-sub,body.lang-gu .hero-sub{font-size:1rem;}
+
+  /* ---- floral art ---- */
+  .hero-floral{position:absolute;z-index:-1;width:clamp(120px,19vw,230px);height:auto;pointer-events:none;}
+  .hf-tl{top:-6px;left:-6px;}
+  .hf-tr{top:-6px;right:-6px;transform:scaleX(-1);}
+  .hf-bl{bottom:-6px;left:-6px;transform:scaleY(-1);opacity:.82;width:clamp(95px,14vw,175px);}
+  .hf-br{bottom:-6px;right:-6px;transform:scale(-1,-1);opacity:.82;width:clamp(95px,14vw,175px);}
+  .floral-divider{display:block;margin:20px auto 4px;width:clamp(190px,42%,260px);height:auto;}
+  .vine{position:fixed;top:0;left:-6px;height:100vh;width:auto;z-index:-1;opacity:.5;pointer-events:none;}
+  @media (max-width:900px){ .vine{display:none;} }
+
+  /* ---- motion ---- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .draw path,.draw line{stroke-dasharray:240;stroke-dashoffset:240;transition:stroke-dashoffset 2s ease .3s;}
+  .draw.in path,.draw.in line{stroke-dashoffset:0;}
+
+  @media (max-width:760px){
+    section{padding:72px 0;}
+    .details-grid{grid-template-columns:1fr;gap:30px;}
+    .unit{min-width:128px;flex:1 1 40%;}
+    .map-frame{height:300px;}
+    .lang-switch{top:10px;right:10px;}
+    .lang-switch button{padding:6px 10px;font-size:.72rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .draw path,.draw line{stroke-dashoffset:0;transition:none;}
+  }
+</style>
+</head>
+<body class="lang-en">
+
+  <!-- ===== floral art: reusable definitions (drawn vector, not photos) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="fl-leaf">
+        <path d="M0 0 Q 15 -8 30 0 Q 15 8 0 0 Z" fill="#BD9B53" fill-opacity="0.5"/>
+        <path d="M2 0 L 27 0" stroke="#9C7C2E" stroke-opacity="0.4" stroke-width="0.8" fill="none"/>
+      </g>
+      <g id="fl-bud">
+        <path d="M0 0 C -5 -4 -5 -14 0 -20 C 5 -14 5 -4 0 0 Z" fill="#C98A93" fill-opacity="0.82"/>
+        <path d="M0 0 C -4 -2 -7 -5 -8 -9 M0 0 C 4 -2 7 -5 8 -9 M0 0 V -8" stroke="#BD9B53" stroke-opacity="0.7" stroke-width="1" fill="none"/>
+      </g>
+      <g id="fl-bloomGold">
+        <g fill="#D9C07A" fill-opacity="0.72">
+          <ellipse cx="0" cy="-9" rx="6" ry="10"/>
+          <ellipse cx="0" cy="-9" rx="6" ry="10" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-9" rx="6" ry="10" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-9" rx="6" ry="10" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-9" rx="6" ry="10" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-9" rx="6" ry="10" transform="rotate(300)"/>
+        </g>
+        <circle r="4.5" fill="#B5707C" fill-opacity="0.85"/>
+      </g>
+      <g id="fl-bloomRose">
+        <g fill="#CE9298" fill-opacity="0.6">
+          <ellipse cx="0" cy="-15" rx="10" ry="18"/>
+          <ellipse cx="0" cy="-15" rx="10" ry="18" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-15" rx="10" ry="18" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-15" rx="10" ry="18" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-15" rx="10" ry="18" transform="rotate(288)"/>
+        </g>
+        <g fill="#B5707C" fill-opacity="0.72" transform="rotate(36)">
+          <ellipse cx="0" cy="-9" rx="6.5" ry="11"/>
+          <ellipse cx="0" cy="-9" rx="6.5" ry="11" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-9" rx="6.5" ry="11" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-9" rx="6.5" ry="11" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-9" rx="6.5" ry="11" transform="rotate(288)"/>
+        </g>
+        <circle r="6" fill="#BD9B53" fill-opacity="0.9"/>
+        <circle r="2.6" fill="#E9DCA8"/>
+      </g>
+
+      <g id="fl-corner">
+        <use href="#fl-leaf" transform="translate(6,10) rotate(38) scale(1.15)"/>
+        <use href="#fl-leaf" transform="translate(10,40) rotate(74) scale(.95)"/>
+        <use href="#fl-leaf" transform="translate(46,8) rotate(8) scale(1.05)"/>
+        <use href="#fl-leaf" transform="translate(96,24) rotate(26) scale(.85)"/>
+        <use href="#fl-leaf" transform="translate(150,16) rotate(6) scale(.7)"/>
+        <use href="#fl-leaf" transform="translate(28,92) rotate(82) scale(.8)"/>
+        <use href="#fl-bud" transform="translate(162,42) rotate(35)"/>
+        <use href="#fl-bud" transform="translate(36,140) rotate(60)"/>
+        <use href="#fl-bloomGold" transform="translate(122,30)"/>
+        <use href="#fl-bloomRose" transform="translate(60,62)"/>
+        <use href="#fl-bloomGold" transform="translate(40,118) scale(.85)"/>
+        <use href="#fl-bloomRose" transform="translate(110,96) scale(.7)"/>
+      </g>
+
+      <g id="fl-divider">
+        <path d="M120 36 C 92 30 64 40 26 35" fill="none" stroke="#BD9B53" stroke-opacity=".55" stroke-width="1.2"/>
+        <path d="M120 36 C 148 30 176 40 214 35" fill="none" stroke="#BD9B53" stroke-opacity=".55" stroke-width="1.2"/>
+        <use href="#fl-leaf" transform="translate(70,36) rotate(200) scale(.8)"/>
+        <use href="#fl-leaf" transform="translate(170,36) rotate(-20) scale(.8)"/>
+        <use href="#fl-leaf" transform="translate(95,33) rotate(165) scale(.7)"/>
+        <use href="#fl-leaf" transform="translate(145,33) rotate(15) scale(.7)"/>
+        <use href="#fl-bud" transform="translate(24,35) rotate(-95) scale(.8)"/>
+        <use href="#fl-bud" transform="translate(216,35) rotate(95) scale(.8)"/>
+        <use href="#fl-bloomGold" transform="translate(92,34) scale(.85)"/>
+        <use href="#fl-bloomGold" transform="translate(148,34) scale(.85)"/>
+        <use href="#fl-bloomRose" transform="translate(120,33)"/>
+      </g>
+
+      <g id="fl-vine">
+        <path d="M40 -10 C 78 110 8 230 46 350 C 84 470 12 590 48 710 C 84 830 16 950 42 1010" fill="none" stroke="#BD9B53" stroke-opacity=".5" stroke-width="1.4"/>
+        <use href="#fl-leaf" transform="translate(46,60) rotate(20) scale(.9)"/>
+        <use href="#fl-leaf" transform="translate(30,120) rotate(150) scale(.8)"/>
+        <use href="#fl-bloomRose" transform="translate(40,172) scale(.72)"/>
+        <use href="#fl-leaf" transform="translate(52,250) rotate(10) scale(.85)"/>
+        <use href="#fl-bud" transform="translate(20,300) rotate(-40)"/>
+        <use href="#fl-bloomGold" transform="translate(46,362) scale(.9)"/>
+        <use href="#fl-leaf" transform="translate(30,430) rotate(160) scale(.8)"/>
+        <use href="#fl-bloomRose" transform="translate(48,502) scale(.75)"/>
+        <use href="#fl-leaf" transform="translate(52,580) rotate(15) scale(.85)"/>
+        <use href="#fl-bud" transform="translate(22,640) rotate(-30)"/>
+        <use href="#fl-bloomGold" transform="translate(46,712) scale(.85)"/>
+        <use href="#fl-leaf" transform="translate(30,780) rotate(160) scale(.8)"/>
+        <use href="#fl-bloomRose" transform="translate(46,852) scale(.7)"/>
+        <use href="#fl-leaf" transform="translate(52,920) rotate(12) scale(.8)"/>
+        <use href="#fl-bloomGold" transform="translate(40,982) scale(.8)"/>
+      </g>
+    </defs>
+  </svg>
+
+  <svg class="vine" viewBox="0 0 90 1010" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#fl-vine"/></svg>
+
+  <nav class="lang-switch" aria-label="Choose language">
+    <button type="button" data-l="hi" lang="hi">हिंदी</button>
+    <button type="button" data-l="en" lang="en">EN</button>
+    <button type="button" data-l="gu" lang="gu">ગુજરાતી</button>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <header class="hero">
+    <svg class="hero-floral hf-tl" viewBox="0 0 200 200" aria-hidden="true"><use href="#fl-corner"/></svg>
+    <svg class="hero-floral hf-tr" viewBox="0 0 200 200" aria-hidden="true"><use href="#fl-corner"/></svg>
+    <svg class="hero-floral hf-bl" viewBox="0 0 200 200" aria-hidden="true"><use href="#fl-corner"/></svg>
+    <svg class="hero-floral hf-br" viewBox="0 0 200 200" aria-hidden="true"><use href="#fl-corner"/></svg>
+    <p class="eyebrow reveal" data-i18n="eyebrow_families">Together with their families</p>
+
+    <h1 class="names reveal">
+      <span data-i18n="name1">Kirtan</span>
+      <span class="amp" data-i18n="amp">&amp;</span>
+      <span data-i18n="name2">Shraddha</span>
+    </h1>
+
+    <svg class="sprig draw reveal" viewBox="0 0 200 40" aria-hidden="true">
+      <line x1="100" y1="6" x2="100" y2="34"/>
+      <path d="M100 14 C 84 8, 70 12, 60 20"/>
+      <path d="M100 14 C 116 8, 130 12, 140 20"/>
+      <path d="M100 22 C 88 18, 78 21, 70 27"/>
+      <path d="M100 22 C 112 18, 122 21, 130 27"/>
+      <path d="M100 30 C 92 28, 86 30, 81 33"/>
+      <path d="M100 30 C 108 28, 114 30, 119 33"/>
+      <circle cx="100" cy="6" r="2.2" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <p class="hero-sub reveal" data-i18n="sub_engaged">are getting engaged</p>
+    <p class="hero-date reveal" data-i18n="hero_date">Sunday, the thirtieth of August, 2026</p>
+
+    <div class="scroll-hint reveal"><span style="display:inline" data-i18n="scroll">Scroll</span><span></span></div>
+  </header>
+
+  <!-- =================== COUNTDOWN =================== -->
+  <section class="countdown centered">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="eyebrow_wait">The wait begins</p>
+      <h2 class="title reveal" data-i18n="title_countdown">Counting down to the day</h2>
+      <div class="clock reveal">
+        <div class="unit"><div class="n" id="cd-days">--</div><div class="l" data-i18n="lbl_days">Days</div></div>
+        <div class="unit"><div class="n" id="cd-hours">--</div><div class="l" data-i18n="lbl_hours">Hours</div></div>
+        <div class="unit"><div class="n" id="cd-mins">--</div><div class="l" data-i18n="lbl_mins">Minutes</div></div>
+        <div class="unit"><div class="n" id="cd-secs">--</div><div class="l" data-i18n="lbl_secs">Seconds</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== DETAILS =================== -->
+  <section class="details">
+    <div class="wrap">
+      <div class="centered">
+        <p class="eyebrow reveal" data-i18n="eyebrow_when">When &amp; where</p>
+        <h2 class="title reveal" data-i18n="title_celebration">The celebration</h2>
+        <svg class="floral-divider reveal" viewBox="0 0 240 70" aria-hidden="true"><use href="#fl-divider"/></svg>
+      </div>
+
+      <div class="details-grid">
+        <div class="reveal">
+          <div class="detail-block">
+            <div class="k" data-i18n="k_date">Date</div>
+            <div class="v"><em data-i18n="v_date">Sunday, 30 August 2026</em></div>
+          </div>
+          <div class="detail-block">
+            <div class="k" data-i18n="k_time">Time</div>
+            <div class="v" data-i18n="v_time">11:00 in the morning, onwards</div>
+          </div>
+          <div class="detail-block">
+            <div class="k" data-i18n="k_venue">Venue</div>
+            <!-- venue name + address kept identical across languages -->
+            <div class="v"><em>BAPS Hall</em><br/>3rd Floor, Diamoda Gold, Tanvi Complex, Dahisar East, Mumbai 400068</div>
+          </div>
+          <div class="detail-block">
+            <div class="k" data-i18n="k_dress">Dress code</div>
+            <div class="v" data-i18n="v_dress">Indian / formal</div>
+          </div>
+        </div>
+
+        <!-- EDIT: MAP — change q= to your venue -->
+        <iframe class="map-frame reveal" title="Map to the venue" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=19.2538352,72.8680472&z=17&output=embed"></iframe>
+      </div>
+
+      <div class="centered reveal" style="margin-top:48px;">
+        <button type="button" id="add-cal" class="cal-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="17" height="17">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="8" y1="3" x2="8" y2="7"/>
+            <line x1="16" y1="3" x2="16" y2="7"/>
+            <line x1="12" y1="13" x2="12" y2="17"/>
+            <line x1="10" y1="15" x2="14" y2="15"/>
+          </svg>
+          <span class="cal-label" data-i18n="btn_cal">Add to calendar</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== RSVP =================== -->
+  <section class="rsvp centered">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="eyebrow_reply">Kindly reply</p>
+      <h2 class="title reveal" data-i18n="title_join">Will you join us?</h2>
+      <p class="reveal" data-i18n="rsvp_intro" style="max-width:520px;margin:6px auto 0;color:var(--ink);">
+        We would be honoured to have you there. Please let us know by the first of August.
+      </p>
+
+      <form id="rsvp-form" class="reveal" novalidate>
+        <div class="field">
+          <label for="name"><span data-i18n="lbl_name">Your name</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label><span data-i18n="lbl_attend">Will you attend?</span></label>
+          <div class="choice">
+            <label><input type="radio" name="attending" value="Joyfully accepts" checked /> <span data-i18n="opt_accept">Joyfully accepts</span></label>
+            <label><input type="radio" name="attending" value="Regretfully declines" /> <span data-i18n="opt_decline">Regretfully declines</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="guests"><span data-i18n="lbl_guests">Number of guests (including you)</span></label>
+          <input type="number" id="guests" name="guests" min="1" max="20" value="1" />
+        </div>
+
+        <button type="submit" class="submit" id="submit-btn" data-i18n="btn_send">Send our reply</button>
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <svg class="floral-divider reveal" viewBox="0 0 240 70" aria-hidden="true" style="margin-bottom:6px;"><use href="#fl-divider"/></svg>
+    <div class="amp-foot">&amp;</div>
+    <p data-i18n="footer_line">Kirtan &amp; Shraddha · August 2026</p>
+  </footer>
+
+<script>
+  /* ============================================================
+     EDIT — settings
+     ============================================================ */
+  const EVENT = {
+    date: "2026-08-30T11:00:00",            // countdown + calendar start (24h local)
+    durationHours: 4,
+    location: "BAPS Hall, 3rd Floor, Diamoda Gold, Tanvi Complex, Dahisar East, Mumbai 400068"
+  };
+
+  const GFORM = {
+    // EDIT — RSVPs are sent straight into your Google Form (free, unlimited,
+    // collected in the linked Google Sheet).
+    //
+    // SETUP (already done — keep for reference if you ever rebuild the form):
+    //  1. Google Form with 3 questions:
+    //       • "Name"              -> Short answer
+    //       • "Will you attend?"  -> Multiple choice, options EXACTLY:
+    //                                  Joyfully accepts
+    //                                  Regretfully declines
+    //       • "Number of guests"  -> Short answer
+    //  2. Editor ⋮ menu → "Get pre-filled link" to read each entry.NUMBER id.
+    //  3. "action" = the form URL with "/viewform" changed to "/formResponse".
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSdrDe1tgf1IZs-gMKrNpOQyPod6pWrNc2Cno7vHfOvCAj6YUg/formResponse",
+    entries: {
+      name:      "entry.118181643",
+      attending: "entry.1958915274",
+      guests:    "entry.1757421773"
+    }
+  };
+
+  /* ============================================================
+     EDIT — all wording, in 3 languages.
+     ============================================================ */
+  const I18N = {
+    en:{
+      title_page:"Kirtan & Shraddha — An Engagement Celebration",
+      eyebrow_families:"Together with their families",
+      name1:"Kirtan", amp:"&", name2:"Shraddha",
+      sub_engaged:"are getting engaged",
+      hero_date:"Sunday, the thirtieth of August, 2026",
+      scroll:"Scroll",
+      eyebrow_wait:"The wait begins",
+      title_countdown:"Counting down to the day",
+      lbl_days:"Days", lbl_hours:"Hours", lbl_mins:"Minutes", lbl_secs:"Seconds",
+      eyebrow_when:"When & where",
+      title_celebration:"The celebration",
+      k_date:"Date", v_date:"Sunday, 30 August 2026",
+      k_time:"Time", v_time:"11:00 in the morning, onwards",
+      k_venue:"Venue",
+      k_dress:"Dress code", v_dress:"Indian / formal",
+      btn_cal:"Add to calendar", cal_saved:"Saved to calendar",
+      eyebrow_reply:"Kindly reply",
+      title_join:"Will you join us?",
+      rsvp_intro:"We would be honoured to have you there. Please let us know by the first of August.",
+      lbl_name:"Your name", lbl_email:"Email", optional:"(optional)",
+      lbl_attend:"Will you attend?",
+      opt_accept:"Joyfully accepts", opt_decline:"Regretfully declines",
+      lbl_guests:"Number of guests (including you)",
+      lbl_note:"A note for the couple",
+      btn_send:"Send our reply",
+      footer_line:"Kirtan & Shraddha · August 2026",
+      sending:"Sending…",
+      err_name:"Please add your name so we know who is coming.",
+      err_notconnected:"The RSVP isn’t connected yet. Please try again shortly.",
+      ok_sent:"Thank you — your reply is on its way to us. We can’t wait to celebrate with you.",
+      err_failed:"Something went wrong sending your reply. Please try again in a moment.",
+      err_network:"We couldn’t reach the server. Check your connection and try again."
+    },
+    hi:{
+      title_page:"किर्तन और श्रद्धा — सगाई समारोह",
+      eyebrow_families:"अपने परिवारों सहित",
+      name1:"किर्तन", amp:"और", name2:"श्रद्धा",
+      sub_engaged:"की सगाई हो रही है",
+      hero_date:"रविवार, तीस अगस्त 2026",
+      scroll:"नीचे देखें",
+      eyebrow_wait:"प्रतीक्षा आरंभ",
+      title_countdown:"उस दिन की उलटी गिनती",
+      lbl_days:"दिन", lbl_hours:"घंटे", lbl_mins:"मिनट", lbl_secs:"सेकंड",
+      eyebrow_when:"कब और कहाँ",
+      title_celebration:"समारोह",
+      k_date:"तारीख़", v_date:"रविवार, 30 अगस्त 2026",
+      k_time:"समय", v_time:"सुबह 11:00 बजे से",
+      k_venue:"स्थान",
+      k_dress:"पहनावा", v_dress:"भारतीय / औपचारिक",
+      btn_cal:"कैलेंडर में जोड़ें", cal_saved:"कैलेंडर में जोड़ा गया",
+      eyebrow_reply:"कृपया उत्तर दें",
+      title_join:"क्या आप हमारे साथ होंगे?",
+      rsvp_intro:"हमें आपकी उपस्थिति का सम्मान होगा। कृपया 1 अगस्त तक हमें अवश्य बताएं।",
+      lbl_name:"आपका नाम", lbl_email:"ईमेल", optional:"(वैकल्पिक)",
+      lbl_attend:"क्या आप आएंगे?",
+      opt_accept:"सहर्ष स्वीकार", opt_decline:"क्षमा सहित अस्वीकार",
+      lbl_guests:"मेहमानों की संख्या (आप सहित)",
+      lbl_note:"जोड़े के लिए संदेश",
+      btn_send:"हमारा उत्तर भेजें",
+      footer_line:"किर्तन और श्रद्धा · अगस्त 2026",
+      sending:"भेजा जा रहा है…",
+      err_name:"कृपया अपना नाम लिखें ताकि हमें पता चले कौन आ रहा है।",
+      err_notconnected:"RSVP अभी उपलब्ध नहीं है। कृपया थोड़ी देर बाद पुनः प्रयास करें।",
+      ok_sent:"धन्यवाद — आपका उत्तर हम तक पहुँच रहा है। हम आपके साथ जश्न मनाने के लिए उत्सुक हैं।",
+      err_failed:"उत्तर भेजने में कुछ गड़बड़ हुई। कृपया थोड़ी देर बाद पुनः प्रयास करें।",
+      err_network:"सर्वर से संपर्क नहीं हो सका। कृपया अपना कनेक्शन जाँचें और पुनः प्रयास करें।"
+    },
+    gu:{
+      title_page:"કિર્તન અને શ્રદ્ધા — સગાઈ સમારોહ",
+      eyebrow_families:"પોતાના પરિવારો સહિત",
+      name1:"કિર્તન", amp:"અને", name2:"શ્રદ્ધા",
+      sub_engaged:"ની સગાઈ થઈ રહી છે",
+      hero_date:"રવિવાર, ત્રીસમી ઑગસ્ટ 2026",
+      scroll:"નીચે જુઓ",
+      eyebrow_wait:"પ્રતીક્ષા શરૂ",
+      title_countdown:"એ દિવસની ઉલટી ગણતરી",
+      lbl_days:"દિવસ", lbl_hours:"કલાક", lbl_mins:"મિનિટ", lbl_secs:"સેકન્ડ",
+      eyebrow_when:"ક્યારે અને ક્યાં",
+      title_celebration:"ઉજવણી",
+      k_date:"તારીખ", v_date:"રવિવાર, 30 ઑગસ્ટ 2026",
+      k_time:"સમય", v_time:"સવારે 11:00 વાગ્યાથી",
+      k_venue:"સ્થળ",
+      k_dress:"પહેરવેશ", v_dress:"ભારતીય / ઔપચારિક",
+      btn_cal:"કેલેન્ડરમાં ઉમેરો", cal_saved:"કેલેન્ડરમાં ઉમેરાયું",
+      eyebrow_reply:"કૃપા કરી જવાબ આપો",
+      title_join:"શું તમે અમારી સાથે જોડાશો?",
+      rsvp_intro:"તમારી હાજરી અમારા માટે સન્માનની વાત હશે. કૃપા કરી 1 ઑગસ્ટ સુધી અમને જણાવો.",
+      lbl_name:"તમારું નામ", lbl_email:"ઈમેલ", optional:"(વૈકલ્પિક)",
+      lbl_attend:"શું તમે આવશો?",
+      opt_accept:"આનંદથી સ્વીકાર", opt_decline:"માફી સહિત અસ્વીકાર",
+      lbl_guests:"મહેમાનોની સંખ્યા (તમારા સહિત)",
+      lbl_note:"યુગલ માટે સંદેશ",
+      btn_send:"અમારો જવાબ મોકલો",
+      footer_line:"કિર્તન અને શ્રદ્ધા · ઑગસ્ટ 2026",
+      sending:"મોકલાઈ રહ્યું છે…",
+      err_name:"કૃપા કરી તમારું નામ લખો જેથી અમને ખબર પડે કોણ આવી રહ્યું છે.",
+      err_notconnected:"RSVP હજી ઉપલબ્ધ નથી. કૃપા કરી થોડી વારે ફરી પ્રયાસ કરો.",
+      ok_sent:"આભાર — તમારો જવાબ અમારા સુધી પહોંચી રહ્યો છે. અમે તમારી સાથે ઉજવણી કરવા આતુર છીએ.",
+      err_failed:"જવાબ મોકલવામાં કંઈક ખોટું થયું. કૃપા કરી થોડી વારે ફરી પ્રયાસ કરો.",
+      err_network:"સર્વર સાથે સંપર્ક થઈ શક્યો નહીં. કૃપા કરી તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો."
+    }
+  };
+
+  let currentLang = "en";
+
+  function setLang(lang){
+    if(!I18N[lang]) lang = "en";
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.body.classList.remove("lang-en","lang-hi","lang-gu");
+    document.body.classList.add("lang-"+lang);
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const k = el.getAttribute("data-i18n");
+      if(dict[k] != null) el.textContent = dict[k];
+    });
+    document.title = dict.title_page;
+    document.querySelectorAll(".lang-switch button").forEach(b=>{
+      const on = b.dataset.l === lang;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  (function(){
+    const nav = (navigator.language || "en").toLowerCase();
+    const initial = nav.startsWith("hi") ? "hi" : nav.startsWith("gu") ? "gu" : "en";
+    setLang(initial);
+    document.querySelectorAll(".lang-switch button").forEach(b=>{
+      b.addEventListener("click", ()=> setLang(b.dataset.l));
+    });
+  })();
+
+  /* ---------- countdown ---------- */
+  (function(){
+    const target = new Date(EVENT.date).getTime();
+    const el = {d:document.getElementById('cd-days'),h:document.getElementById('cd-hours'),m:document.getElementById('cd-mins'),s:document.getElementById('cd-secs')};
+    const pad = n => String(n).padStart(2,'0');
+    function tick(){
+      if(isNaN(target)){ el.d.textContent='--'; return; }
+      const diff = target - Date.now();
+      if(diff <= 0){ el.d.textContent=el.h.textContent=el.m.textContent=el.s.textContent='0'; return; }
+      const s=Math.floor(diff/1000);
+      el.d.textContent = Math.floor(s/86400);
+      el.h.textContent = pad(Math.floor(s%86400/3600));
+      el.m.textContent = pad(Math.floor(s%3600/60));
+      el.s.textContent = pad(s%60);
+    }
+    tick(); setInterval(tick,1000);
+  })();
+
+  /* ---------- add to calendar (.ics) ---------- */
+  (function(){
+    const btn = document.getElementById('add-cal');
+    if(!btn) return;
+    function fmt(d){const p=n=>String(n).padStart(2,'0');return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'T'+p(d.getHours())+p(d.getMinutes())+p(d.getSeconds());}
+    function esc(s){return String(s).replace(/([,;\\])/g,'\\$1').replace(/\n/g,'\\n');}
+    btn.addEventListener('click', ()=>{
+      const start = new Date(EVENT.date);
+      if(isNaN(start)) return;
+      const end = new Date(start.getTime() + (EVENT.durationHours||3)*3600*1000);
+      const stamp = fmt(new Date());
+      const title = (I18N.en.name1)+' & '+(I18N.en.name2)+' — Engagement';
+      const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Engagement Invite//EN','CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT','UID:'+stamp+'-engagement@invite','DTSTAMP:'+stamp,
+        'DTSTART:'+fmt(start),'DTEND:'+fmt(end),
+        'SUMMARY:'+esc(title),'LOCATION:'+esc(EVENT.location),
+        'DESCRIPTION:'+esc('Join us to celebrate the engagement of '+I18N.en.name1+' & '+I18N.en.name2+'.'),
+        'END:VEVENT','END:VCALENDAR'].join('\r\n');
+      const blob = new Blob([ics],{type:'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url; a.download='engagement.ics';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url),1500);
+      btn.classList.add('done');
+      btn.querySelector('.cal-label').textContent = I18N[currentLang].cal_saved;
+    });
+  })();
+
+  /* ---------- scroll reveals ---------- */
+  (function(){
+    const items = document.querySelectorAll('.reveal');
+    const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(reduce){ items.forEach(i=>i.classList.add('in')); return; }
+    document.querySelectorAll('.hero .reveal').forEach((i,idx)=> setTimeout(()=>i.classList.add('in'), 180*idx + 120));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    },{threshold:0.18});
+    items.forEach(i=>{ if(!i.closest('.hero')) io.observe(i); });
+  })();
+
+  /* ---------- rsvp ---------- */
+  (function(){
+    const form = document.getElementById('rsvp-form');
+    const msg  = document.getElementById('form-msg');
+    const btn  = document.getElementById('submit-btn');
+    function say(text, isError){ msg.textContent = text; msg.classList.toggle('error', !!isError); }
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const T = I18N[currentLang];
+      if(!form.name.value.trim()){ say(T.err_name, true); form.name.focus(); return; }
+      if(!GFORM.action){ say(T.err_notconnected, true); return; }
+
+      btn.disabled = true;
+      const original = T.btn_send;
+      btn.textContent = T.sending;
+      try{
+        const params = new URLSearchParams();
+        params.append(GFORM.entries.name, form.name.value.trim());
+        params.append(GFORM.entries.attending, form.attending.value);
+        if(GFORM.entries.guests && form.guests) params.append(GFORM.entries.guests, form.guests.value);
+        // Google blocks reading the response, so we POST no-cors and treat
+        // a completed request as success (test once to confirm it records).
+        await fetch(GFORM.action, { method:'POST', mode:'no-cors', body:params });
+        form.reset();
+        say(T.ok_sent);
+        btn.style.display='none';
+      }catch(err){
+        say(T.err_network, true); btn.disabled=false; btn.textContent=original;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
